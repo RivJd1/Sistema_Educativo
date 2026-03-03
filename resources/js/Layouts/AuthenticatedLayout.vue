@@ -8,8 +8,6 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
-
-
 const links = [
     'Home',
     'About Us',
@@ -18,7 +16,6 @@ const links = [
     'Blog',
     'Contact Us',
 ]
-
 const messages = [
     {
         from: 'You',
@@ -217,50 +214,49 @@ const messages = [
             >
                 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                     <slot name="header" />
+                    <v-card class="mx-auto" max-width="400">
+                        <v-img
+                            color="surface-variant"
+                            height="100"
+                            src="https://cdn.vuetifyjs.com/docs/images/cards/purple-flowers.jpg"
+                            cover
+                        >
+                            <v-toolbar color="transparent">
+                                <template v-slot:prepend>
+                                    <v-btn icon="$menu"></v-btn>
+                                </template>
+
+                                <v-toolbar-title class="text-title-large" text="Messages"></v-toolbar-title>
+
+                                <template v-slot:append>
+                                    <v-btn icon="mdi-dots-vertical"></v-btn>
+                                </template>
+                            </v-toolbar>
+                        </v-img>
+
+                        <v-card-text>
+                            <div class="font-weight-bold ms-1 mb-2">Today</div>
+
+                            <v-timeline align="start" density="compact">
+                                <v-timeline-item
+                                    v-for="message in messages"
+                                    :key="message.time"
+                                    :dot-color="message.color"
+                                    size="x-small"
+                                >
+                                    <div class="mb-4">
+                                        <div class="font-weight-normal">
+                                            <strong>{{ message.from }}</strong> @{{ message.time }}
+                                        </div>
+
+                                        <div>{{ message.message }}</div>
+                                    </div>
+                                </v-timeline-item>
+                            </v-timeline>
+                        </v-card-text>
+                    </v-card>
                 </div>
             </header>
-
-            <v-card class="mx-auto" max-width="400">
-                <v-img
-                    color="surface-variant"
-                    height="100"
-                    src="https://cdn.vuetifyjs.com/docs/images/cards/purple-flowers.jpg"
-                    cover
-                >
-                    <v-toolbar color="transparent">
-                        <template v-slot:prepend>
-                            <v-btn icon="$menu"></v-btn>
-                        </template>
-
-                        <v-toolbar-title class="text-title-large" text="Messages"></v-toolbar-title>
-
-                        <template v-slot:append>
-                            <v-btn icon="mdi-dots-vertical"></v-btn>
-                        </template>
-                    </v-toolbar>
-                </v-img>
-
-                <v-card-text>
-                    <div class="font-weight-bold ms-1 mb-2">Today</div>
-
-                    <v-timeline align="start" density="compact">
-                        <v-timeline-item
-                            v-for="message in messages"
-                            :key="message.time"
-                            :dot-color="message.color"
-                            size="x-small"
-                        >
-                            <div class="mb-4">
-                                <div class="font-weight-normal">
-                                    <strong>{{ message.from }}</strong> @{{ message.time }}
-                                </div>
-
-                                <div>{{ message.message }}</div>
-                            </div>
-                        </v-timeline-item>
-                    </v-timeline>
-                </v-card-text>
-            </v-card>
 
             <!-- Page Content -->
             <main>
@@ -268,34 +264,36 @@ const messages = [
             </main>
         </div>
     </div>
-    <v-card>
-        <v-layout>
-            <v-navigation-drawer
-                expand-on-hover
-                permanent
-                rail
-            >
-                <v-list>
-                    <v-list-item
-                        prepend-avatar="https://i.pinimg.com/originals/9e/21/86/9e2186e732c8c717a0d3c74a22a4d8ff.jpg"
-                        :subtitle="$page.props.auth.user.email"
-                        v-bind:title="$page.props.auth.user.name"
-                    ></v-list-item>
-                </v-list>
+        <v-card>
+            <v-layout>
+                <v-navigation-drawer
+                    expand-on-hover
+                    permanent
+                    rail
+                >
+                    <v-list>
+                        <v-list-item
+                            prepend-avatar="https://i.pinimg.com/originals/9e/21/86/9e2186e732c8c717a0d3c74a22a4d8ff.jpg"
+                            :subtitle="$page.props.auth.user.email"
+                            v-bind:title="$page.props.auth.user.name"
+                        ></v-list-item>
+                    </v-list>
 
-                <v-divider></v-divider>
+                    <v-divider></v-divider>
 
-                <v-list density="compact" nav>
-                    <v-list-item prepend-icon="mdi mdi-account-cowboy-hat" title="Medicos" value="myfiles"></v-list-item>
-                    <v-list-item prepend-icon="mdi mdi-airballoon" title="Pacientes" value="ejemplo"></v-list-item>
-                    <v-list-item prepend-icon="mdi mdi-alien" title="Categorias" value="shared"></v-list-item>
-                    <v-list-item prepend-icon="mdi mdi-at" title="Atencion" value="starred"></v-list-item>
-                </v-list>
-            </v-navigation-drawer>
+                    <v-list density="compact" nav>
+                        <Link :href="route('students.index')" class="text-decoration-none">
+                        <v-list-item prepend-icon="mdi mdi-account-cowboy-hat" title="Estudiantes" value="myfiles"></v-list-item>
+                        </Link>
+                        <v-list-item prepend-icon="mdi mdi-airballoon" title="Pacientes" value="ejemplo"></v-list-item>
+                        <v-list-item prepend-icon="mdi mdi-alien" title="Categorias" value="shared"></v-list-item>
+                        <v-list-item prepend-icon="mdi mdi-at" title="Atencion" value="starred"></v-list-item>
+                    </v-list>
+                </v-navigation-drawer>
 
-            <v-main style="height: 250px"></v-main>
-        </v-layout>
-    </v-card>
+                <v-main style="height: 250px"></v-main>
+            </v-layout>
+        </v-card>
 
     <v-footer class="d-flex align-center justify-center ga-2 flex-wrap flex-grow-1 py-3" color="surface-light">
         <v-btn
