@@ -4,17 +4,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 
 const desserts = ref([
     {
-        student_code: '2234',
-        name: 'Josué',
-        email:'e',
-        semester:'e',
-        status:'e',
-    },
-    {
-        student_code: '2234',
-        name: 'Josué',
-        email:'e',
-        semester:'e',
+        employee_code: '333',
+        speacialty: 'ff',
+        hire:'e',
         status:'e',
     },
 ])
@@ -26,19 +18,16 @@ const desserts = ref([
             <thead>
             <tr>
                 <th class="text-left">
-                    Codigo_estudiante
+                    Codigo Empleado
                 </th>
                 <th class="text-left">
-                    Nombre
+                    Especialidad
                 </th>
                 <th class="text-left">
-                    Email
+                    Contratado
                 </th>
                 <th class="text-left">
-                    Semestre
-                </th>
-                <th class="text-left">
-                    Estatus
+                    Estado
                 </th>
             </tr>
             </thead>
@@ -47,10 +36,9 @@ const desserts = ref([
                 v-for="item in desserts"
                 :key="item.name"
             >
-                <td>{{item.student_code}}</td>
-                <td>{{ item.name }}</td>
-                <td>{{item.email}}</td>
-                <td>{{item.semester}}</td>
+                <td>{{item.employee_code}}</td>
+                <td>{{ item.speacialty }}</td>
+                <td>{{item.hire}}</td>
                 <td>{{item.status}}</td>
             </tr>
             </tbody>

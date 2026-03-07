@@ -17,7 +17,11 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'employee_code' => $this->faker->unique()->randomNumber(4),
+            'specialty'=> $this->faker->randomElement(['software','programming',
+                'arquitectura','derecho']),
+            'hire_date' => $this->faker->date(),
+            'status' => $this->faker->randomElement(['active','inactive']),            //
         ];
     }
 }

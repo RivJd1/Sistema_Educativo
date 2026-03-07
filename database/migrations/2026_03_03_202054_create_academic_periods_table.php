@@ -14,11 +14,8 @@ return new class extends Migration
         Schema::create('academic_periods', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique(); // Ej: 2026-I
-
             $table->date('start_date');
-
             $table->date('end_date');
-
             $table->enum('status', ['active', 'closed'])
                 ->default('active');
 

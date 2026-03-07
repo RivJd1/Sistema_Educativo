@@ -13,7 +13,15 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return inertia::render('student/index');
+        return Inertia::render('student/index');
+//        echo "Hola";
+//        $estudiantes = Student::all();
+//        dd($estudiantes);
+//
+//        return Inertia::render('student/index', [
+//            'estudiantes' => $estudiantes,
+//            'students' => $Student::with('faculty')->get()
+//        ]);
     }
 
     /**
