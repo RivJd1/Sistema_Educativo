@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('students', [StudentController::class, 'index'])->name('students.index');
     Route::get('teachers', [TeacherController::class, 'index'])->name('teacher.index');
+    route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+    route::get('courses/create', [CourseController::class, 'create'])->name('courses.create');
+    route::get('enrollments', [EnrollmentController::class, 'index'])->name('enrollments.index');
 });
 
 require __DIR__.'/auth.php';
