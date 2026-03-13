@@ -282,7 +282,7 @@ const messages = [
                     <v-divider></v-divider>
 
                     <v-list density="compact" nav>
-                        <Link :href="route('students.index')" class="text-decoration-none">
+                        <Link :href="route('student.index')" class="text-decoration-none">
                         <v-list-item prepend-icon="mdi mdi-account-cowboy-hat" title="Estudiantes" value="myfiles"></v-list-item>
                         </Link>
                         <Link :href="route('teacher.index')" class="text-decoration-none">

@@ -1,63 +1,64 @@
-<script setup>
-import { ref } from 'vue'
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-
-const desserts = ref([
-    {
-        student_code: '2234',
-        name: 'Josué',
-        email:'e',
-        semester:'e',
-        status:'e',
-    },
-    {
-        student_code: '2234',
-        name: 'Josué',
-        email:'e',
-        semester:'e',
-        status:'e',
-    },
-])
-</script>
-
 <template>
-    <authenticated-layout>
-        <v-table theme="dark">
-            <thead>
-            <tr>
-                <th class="text-left">
-                    Codigo_estudiante
-                </th>
-                <th class="text-left">
-                    Nombre
-                </th>
-                <th class="text-left">
-                    Email
-                </th>
-                <th class="text-left">
-                    Semestre
-                </th>
-                <th class="text-left">
-                    Estatus
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr
-                v-for="item in desserts"
-                :key="item.name"
-            >
-                <td>{{item.student_code}}</td>
-                <td>{{ item.name }}</td>
-                <td>{{item.email}}</td>
-                <td>{{item.semester}}</td>
-                <td>{{item.status}}</td>
-            </tr>
-            </tbody>
-        </v-table>
-    </authenticated-layout>
-</template>
+    <AuthenticatedLayout>
+        <v-card>
+            <v-card-title class="pb-4">
+                <div class="d-flex justify-space-between align-center w-100">
 
+                    <div class="d-flex align-center">
+                        <span class="text-h5 font-weight-bold">Gestión de Estudiantes</span>
+                    </div>
+                </div>
+            </v-card-title>
+
+            <v-card-text>
+                <v-data-table
+                    :headers="headers"
+                    :items="estudiantes"
+                    density="compact"
+                    item-key="name"
+                ></v-data-table>
+            </v-card-text>
+        </v-card>
+        <v-btn
+            color="primary"
+            size="large"
+            @click=""
+        >
+            Nuevo Estudiante
+        </v-btn>
+    </AuthenticatedLayout>
+</template>
+<script>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import {Link, usePage} from '@inertiajs/vue3'
+import {computed} from 'vue'
+
+export default {
+    name: 'Estudiantes',
+    components: {AuthenticatedLayout, Link},
+    setup() {
+        const page = usePage()
+
+        const estudiantes = computed(() => page.props.estudiantes)
+
+        const headers = [
+            {title: 'Código', key: 'student_code'},
+            {title: 'Nombre', key: 'name'},
+            {title: 'Email', key: 'email'},
+            {title: 'Semestre', key: 'semester'},
+            {title: 'Facultad', key: 'faculty_name'},
+            {title: 'ID de Facultad', key: 'faculty_id'},
+            {title: 'Estado', key: 'status'}
+        ]
+
+        return {
+            headers,
+            estudiantes
+        }
+    }
+}
+
+</script>
 <style scoped>
 
 </style>

@@ -2,21 +2,23 @@
 
 namespace Database\Factories;
 
-use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Teacher;
+use App\Models\AcademicPeriod;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
- */
 class CourseFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'name' => $this->faker->words(3, true),
+            'code' => 'CUR-' . $this->faker->unique()->numberBetween(100,999),
+            'description' => $this->faker->sentence(),
+            'credits' => $this->faker->numberBetween(2,5),
+            'teacher_id' => Teacher::factory(),
+            'academic_period_id' => AcademicPeriod::factory(),
+            'capacity' => $this->faker->numberBetween(20,40),
+            'status' => $this->faker->randomElement(['active','inactive']),
+        ];
     }
 }
