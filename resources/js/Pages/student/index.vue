@@ -19,6 +19,7 @@
                 ></v-data-table>
             </v-card-text>
         </v-card>
+        <Link :href="route('student.create')" class="text-decoration-none">
         <v-btn
             color="primary"
             size="large"
@@ -26,6 +27,7 @@
         >
             Nuevo Estudiante
         </v-btn>
+        </Link>
     </AuthenticatedLayout>
 </template>
 <script>

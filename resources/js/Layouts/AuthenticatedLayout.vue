@@ -288,7 +288,9 @@ const messages = [
                         <Link :href="route('teacher.index')" class="text-decoration-none">
                         <v-list-item prepend-icon="mdi mdi-airballoon" title="Maestros" value="ejemplo"></v-list-item>
                         </Link>
+<!--                        <Link :href="route('.')" class="text-decoration-none">-->
                         <v-list-item prepend-icon="mdi mdi-alien" title="Categorias" value="shared"></v-list-item>
+<!--                        </Link>-->
                         <v-list-item prepend-icon="mdi mdi-at" title="Atencion" value="starred"></v-list-item>
                     </v-list>
                 </v-navigation-drawer>

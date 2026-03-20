@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faculty;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -30,7 +31,10 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return inertia::render('student/create');
+        $faculties = Faculty::all();
+        return inertia::render('student/create',[
+            'faculties' => $faculties
+        ]);
     }
 
 
